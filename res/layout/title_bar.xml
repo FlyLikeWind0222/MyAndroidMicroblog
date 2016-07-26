@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="50dp"
+    android:layout_marginEnd="1dip"
+    android:background="@color/white" >
+
+    <!-- android:background="@drawable/title_bar" -->
+
+    <ImageView
+        style="@style/MyImageButton"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="20dip"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/navigationbar_friendattention" />
+
+    <TextView
+        android:id="@+id/title_username"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="@string/app_name"
+        android:textColor="@color/font_gray"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:layout_width="17dip"
+        android:layout_height="17dip"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="3dip"
+        android:layout_toRightOf="@id/title_username"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/timeline_icon_more_highlighted" />
+
+    <ImageView
+        android:id="@+id/navigationbar_icon_radar"
+        style="@style/MyImageButton"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="20dip"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/navigationbar_icon_radar" />
+
+</RelativeLayout>

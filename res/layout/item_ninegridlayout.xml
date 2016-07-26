@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="10dp"
+    android:layout_marginTop="10dp"
+    android:orientation="horizontal" >
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/ic_launcher"
+        android:contentDescription="@string/_" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:orientation="vertical" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <!-- android:text="小明" -->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp" />
+        <!-- android:text="今天天气真好，好开心！！！！！！！！！！！！！！！！！" -->
+
+        <com.flylikewind.microblog.ui.ninegrid.NineGridlayout
+            android:id="@+id/iv_ngrid_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp" />
+
+        <com.flylikewind.microblog.ui.ninegrid.CustomImageView
+            android:id="@+id/iv_oneimage"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp" />
+        <!-- android:text="3分钟前" -->
+    </LinearLayout>
+
+</LinearLayout>

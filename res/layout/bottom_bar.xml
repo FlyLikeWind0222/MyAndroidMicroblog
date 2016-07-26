@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ly_main_tab_bottom"
+    android:layout_width="match_parent"
+    android:layout_height="55dip"
+    android:background="@color/white" >
+
+    <!-- android:background="@drawable/bottom_bar" -->
+
+    <LinearLayout
+        android:id="@+id/id_tab_bottom_home"
+        style="@style/MyLinearLayout" >
+
+        <ImageButton
+            android:id="@+id/btn_tab_bottom_home"
+            style="@style/MyImageButton"
+            android:contentDescription="@string/home"
+            android:src="@drawable/tabbar_home" />
+
+        <TextView
+            android:id="@+id/txt_tab_bottom_home"
+            style="@style/MyTextView"
+            android:text="@string/home" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/id_tab_bottom_message"
+        style="@style/MyLinearLayout" >
+
+        <ImageButton
+            android:id="@+id/btn_tab_bottom_message"
+            style="@style/MyImageButton"
+            android:contentDescription="@string/message"
+            android:src="@drawable/tabbar_message_center" />
+
+        <TextView
+            android:id="@+id/txt_tab_bottom_message"
+            style="@style/MyTextView"
+            android:text="@string/message" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/id_tab_bottom_add"
+        style="@style/MyLinearLayout"
+        android:layout_gravity="center"
+        android:layout_marginBottom="7dip"
+        android:layout_marginLeft="6dip"
+        android:layout_marginRight="6dip"
+        android:layout_marginTop="7dip"
+        android:background="@color/font_orange" >
+
+        <ImageButton
+            android:id="@+id/btn_tab_bottom_add"
+            style="@style/MyImageButton"
+            android:layout_marginLeft="2dip"
+            android:layout_marginRight="2dip"
+            android:contentDescription="@string/add"
+            android:src="@drawable/findfriend_businesscard_userinfo_me_relationship_indicator_plus" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/id_tab_bottom_discovery"
+        style="@style/MyLinearLayout" >
+
+        <ImageButton
+            android:id="@+id/btn_tab_bottom_discovery"
+            style="@style/MyImageButton"
+            android:contentDescription="@string/discovery"
+            android:src="@drawable/tabbar_discover" />
+
+        <TextView
+            android:id="@+id/txt_tab_bottom_discovery"
+            style="@style/MyTextView"
+            android:text="@string/discovery" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/id_tab_bottom_me"
+        style="@style/MyLinearLayout" >
+
+        <ImageButton
+            android:id="@+id/btn_tab_bottom_me"
+            style="@style/MyImageButton"
+            android:contentDescription="@string/me"
+            android:src="@drawable/tabbar_profile" />
+
+        <TextView
+            android:id="@+id/txt_tab_bottom_me"
+            style="@style/MyTextView"
+            android:text="@string/me" />
+    </LinearLayout>
+
+</LinearLayout>
