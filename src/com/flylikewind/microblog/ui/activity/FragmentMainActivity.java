@@ -12,24 +12,24 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.flylikewind.microblog.R;
-import com.flylikewind.microblog.ui.fragment.MainTab01;
-import com.flylikewind.microblog.ui.fragment.MainTab02;
-import com.flylikewind.microblog.ui.fragment.MainTab03;
-import com.flylikewind.microblog.ui.fragment.MainTab04;
+import com.flylikewind.microblog.ui.fragment.DiscoveryFragment;
+import com.flylikewind.microblog.ui.fragment.HomeFragment;
+import com.flylikewind.microblog.ui.fragment.MeFragment;
+import com.flylikewind.microblog.ui.fragment.MessageFragment;
 
 public class FragmentMainActivity extends Activity implements OnClickListener {
-	private MainTab01 mTab01;
-	private MainTab02 mTab02;
-	private MainTab03 mTab03;
-	private MainTab04 mTab04;
+	private HomeFragment mTab01;
+	private MessageFragment mTab02;
+	private DiscoveryFragment mTab03;
+	private MeFragment mTab04;
 
 	/**
 	 * 底部四个按钮
 	 */
-	private LinearLayout mTabBtnHome, mTabBtnFrd, mTabBtnAddress,
-			mTabBtnSettings;
-	private ImageButton btnWeixin, btnFrd, btnAddress, btnSettings;
-	private TextView txtWeixin, txtFrd, txtAddress, txtSettings;
+	private LinearLayout mTabBtnHome, mTabBtnMessage, mTabBtnDiscovery,
+			mTabBtnMe;
+	private ImageButton btnHome, btnMessage, btnDiscovery, btnMe;
+	private TextView txtHome, txtMessage, txtDiscovery, txtMe;
 	/**
 	 * 用于对Fragment进行管理
 	 */
@@ -48,30 +48,27 @@ public class FragmentMainActivity extends Activity implements OnClickListener {
 	private void initViews() {
 
 		mTabBtnHome = (LinearLayout) findViewById(R.id.id_tab_bottom_home);
-		mTabBtnFrd = (LinearLayout) findViewById(R.id.id_tab_bottom_message);
-		mTabBtnAddress = (LinearLayout) findViewById(R.id.id_tab_bottom_discovery);
-		mTabBtnSettings = (LinearLayout) findViewById(R.id.id_tab_bottom_me);
-		btnWeixin = (ImageButton) mTabBtnHome
+		mTabBtnMessage = (LinearLayout) findViewById(R.id.id_tab_bottom_message);
+		mTabBtnDiscovery = (LinearLayout) findViewById(R.id.id_tab_bottom_discovery);
+		mTabBtnMe = (LinearLayout) findViewById(R.id.id_tab_bottom_me);
+		btnHome = (ImageButton) mTabBtnHome
 				.findViewById(R.id.btn_tab_bottom_home);
-		btnFrd = (ImageButton) mTabBtnFrd
+		btnMessage = (ImageButton) mTabBtnMessage
 				.findViewById(R.id.btn_tab_bottom_message);
-		btnAddress = (ImageButton) mTabBtnAddress
+		btnDiscovery = (ImageButton) mTabBtnDiscovery
 				.findViewById(R.id.btn_tab_bottom_discovery);
-		btnSettings = (ImageButton) mTabBtnSettings
-				.findViewById(R.id.btn_tab_bottom_me);
-		txtWeixin = (TextView) mTabBtnHome
-				.findViewById(R.id.txt_tab_bottom_home);
-		txtFrd = (TextView) mTabBtnFrd
+		btnMe = (ImageButton) mTabBtnMe.findViewById(R.id.btn_tab_bottom_me);
+		txtHome = (TextView) mTabBtnHome.findViewById(R.id.txt_tab_bottom_home);
+		txtMessage = (TextView) mTabBtnMessage
 				.findViewById(R.id.txt_tab_bottom_message);
-		txtAddress = (TextView) mTabBtnAddress
+		txtDiscovery = (TextView) mTabBtnDiscovery
 				.findViewById(R.id.txt_tab_bottom_discovery);
-		txtSettings = (TextView) mTabBtnSettings
-				.findViewById(R.id.txt_tab_bottom_me);
+		txtMe = (TextView) mTabBtnMe.findViewById(R.id.txt_tab_bottom_me);
 
 		mTabBtnHome.setOnClickListener(this);
-		mTabBtnFrd.setOnClickListener(this);
-		mTabBtnAddress.setOnClickListener(this);
-		mTabBtnSettings.setOnClickListener(this);
+		mTabBtnMessage.setOnClickListener(this);
+		mTabBtnDiscovery.setOnClickListener(this);
+		mTabBtnMe.setOnClickListener(this);
 	}
 
 	@Override
@@ -110,12 +107,11 @@ public class FragmentMainActivity extends Activity implements OnClickListener {
 		switch (index) {
 		case 0:
 			// 当点击了消息tab时，改变控件的图片和文字颜色
-			btnWeixin.setImageResource(R.drawable.tabbar_home_highlighted);
-			txtWeixin
-					.setTextColor(getResources().getColor(R.color.font_orange));
+			btnHome.setImageResource(R.drawable.tabbar_home_highlighted);
+			txtHome.setTextColor(getResources().getColor(R.color.font_orange));
 			if (mTab01 == null) {
 				// 如果MessageFragment为空，则创建一个并添加到界面上
-				mTab01 = MainTab01.getInstance();
+				mTab01 = HomeFragment.getInstance();
 				transaction.add(R.id.id_content, mTab01);
 			} else {
 				// 如果MessageFragment不为空，则直接将它显示出来
@@ -124,11 +120,13 @@ public class FragmentMainActivity extends Activity implements OnClickListener {
 			break;
 		case 1:
 			// 当点击了消息tab时，改变控件的图片和文字颜色
-			btnFrd.setImageResource(R.drawable.tabbar_message_center_highlighted);
-			txtFrd.setTextColor(getResources().getColor(R.color.font_orange));
+			btnMessage
+					.setImageResource(R.drawable.tabbar_message_center_highlighted);
+			txtMessage.setTextColor(getResources()
+					.getColor(R.color.font_orange));
 			if (mTab02 == null) {
 				// 如果MessageFragment为空，则创建一个并添加到界面上
-				mTab02 = new MainTab02();
+				mTab02 = new MessageFragment();
 				transaction.add(R.id.id_content, mTab02);
 			} else {
 				// 如果MessageFragment不为空，则直接将它显示出来
@@ -137,12 +135,13 @@ public class FragmentMainActivity extends Activity implements OnClickListener {
 			break;
 		case 2:
 			// 当点击了动态tab时，改变控件的图片和文字颜色
-			btnAddress.setImageResource(R.drawable.tabbar_discover_highlighted);
-			txtAddress.setTextColor(getResources()
-					.getColor(R.color.font_orange));
+			btnDiscovery
+					.setImageResource(R.drawable.tabbar_discover_highlighted);
+			txtDiscovery.setTextColor(getResources().getColor(
+					R.color.font_orange));
 			if (mTab03 == null) {
 				// 如果NewsFragment为空，则创建一个并添加到界面上
-				mTab03 = new MainTab03();
+				mTab03 = new DiscoveryFragment();
 				transaction.add(R.id.id_content, mTab03);
 			} else {
 				// 如果NewsFragment不为空，则直接将它显示出来
@@ -151,12 +150,11 @@ public class FragmentMainActivity extends Activity implements OnClickListener {
 			break;
 		case 3:
 			// 当点击了设置tab时，改变控件的图片和文字颜色
-			btnSettings.setImageResource(R.drawable.tabbar_profile_highlighted);
-			txtSettings.setTextColor(getResources().getColor(
-					R.color.font_orange));
+			btnMe.setImageResource(R.drawable.tabbar_profile_highlighted);
+			txtMe.setTextColor(getResources().getColor(R.color.font_orange));
 			if (mTab04 == null) {
 				// 如果SettingFragment为空，则创建一个并添加到界面上
-				mTab04 = new MainTab04();
+				mTab04 = new MeFragment();
 				transaction.add(R.id.id_content, mTab04);
 			} else {
 				// 如果SettingFragment不为空，则直接将它显示出来
@@ -171,17 +169,16 @@ public class FragmentMainActivity extends Activity implements OnClickListener {
 	 * 清除掉所有的选中状态。
 	 */
 	private void resetBtn() {
-		btnWeixin.setImageResource(R.drawable.tabbar_home);
-		txtWeixin
-				.setTextColor(getResources().getColor(R.color.font_light_gray));
-		btnFrd.setImageResource(R.drawable.tabbar_message_center);
-		txtFrd.setTextColor(getResources().getColor(R.color.font_light_gray));
-		btnAddress.setImageResource(R.drawable.tabbar_discover);
-		txtAddress.setTextColor(getResources()
+		btnHome.setImageResource(R.drawable.tabbar_home);
+		txtHome.setTextColor(getResources().getColor(R.color.font_light_gray));
+		btnMessage.setImageResource(R.drawable.tabbar_message_center);
+		txtMessage.setTextColor(getResources()
 				.getColor(R.color.font_light_gray));
-		btnSettings.setImageResource(R.drawable.tabbar_profile);
-		txtSettings.setTextColor(getResources().getColor(
+		btnDiscovery.setImageResource(R.drawable.tabbar_discover);
+		txtDiscovery.setTextColor(getResources().getColor(
 				R.color.font_light_gray));
+		btnMe.setImageResource(R.drawable.tabbar_profile);
+		txtMe.setTextColor(getResources().getColor(R.color.font_light_gray));
 	}
 
 	/**

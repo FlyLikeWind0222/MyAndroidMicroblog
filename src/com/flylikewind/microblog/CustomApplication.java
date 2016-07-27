@@ -13,6 +13,7 @@ import cn.jpush.android.api.JPushInterface;
 import com.flylikewind.microblog.util.ConstantUtil;
 import com.lidroid.xutils.BitmapUtils;
 import com.lidroid.xutils.DbUtils;
+import com.sina.weibo.sdk.openapi.models.StatusList;
 import com.umeng.analytics.MobclickAgent;
 
 /**
@@ -28,6 +29,8 @@ public class CustomApplication extends Application {
 	private static DbUtils dbUtil = null; // 全局的数据库操作工具类
 	private static BitmapUtils bitmapUtils = null; // 图片加载工具类
 	private static SharedPreferences spUtil = null; // sharedPreferences工具类
+	// 微博数据
+	public static StatusList statuses;
 
 	@Override
 	public void onCreate() {

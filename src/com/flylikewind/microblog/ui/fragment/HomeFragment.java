@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.flylikewind.microblog.CustomApplication;
 import com.flylikewind.microblog.R;
 import com.flylikewind.microblog.adapter.HomeListviewAdapter2;
 import com.flylikewind.microblog.ui.xlistview.XListView;
@@ -28,25 +29,25 @@ import com.sina.weibo.sdk.net.openapi.RefreshTokenApi;
 import com.sina.weibo.sdk.openapi.models.Status;
 
 @SuppressLint("NewApi")
-public class MainTab01 extends Fragment implements IXListViewListener {
+public class HomeFragment extends Fragment implements IXListViewListener {
 
 	public int pageCount = 20;
 	private XListView tabHomeListview;
 	private HomeListviewAdapter2 adapter;
 	private ImageView radar;
-	private static MainTab01 mTab01;
+	private static HomeFragment mTab01;
 	private View mainTab01;
 	private Activity homeActivity;
 	private Handler mHandler;
 
-	public MainTab01() {
+	public HomeFragment() {
 	}
 
-	public static MainTab01 getInstance() {
+	public static HomeFragment getInstance() {
 		if (mTab01 == null) {
-			synchronized (MainTab01.class) {
+			synchronized (HomeFragment.class) {
 				if (mTab01 == null) {
-					mTab01 = new MainTab01();
+					mTab01 = new HomeFragment();
 				}
 			}
 		}
@@ -57,7 +58,7 @@ public class MainTab01 extends Fragment implements IXListViewListener {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		// 刷新token
-//		refreshTokenRequest();
+		// refreshTokenRequest();
 
 		mainTab01 = inflater.inflate(R.layout.main_tab_01, container, false);
 		return mainTab01;
@@ -86,8 +87,8 @@ public class MainTab01 extends Fragment implements IXListViewListener {
 
 	public List<Status> objects(int currentpage) {
 		adapter.getdata(0L, 0L, 10, 1, false, 0, false);
-		if (adapter.statuses != null) {
-			return adapter.statuses.statusList;
+		if (CustomApplication.statuses != null) {
+			return CustomApplication.statuses.statusList;
 		}
 		return null;
 	}
@@ -113,7 +114,7 @@ public class MainTab01 extends Fragment implements IXListViewListener {
 		mHandler.postDelayed(new Runnable() {
 			@Override
 			public void run() {
-				ArrayList<Status> weiboLists = adapter.statuses.statusList;
+				ArrayList<Status> weiboLists = CustomApplication.statuses.statusList;
 				String id = weiboLists.get(weiboLists.size() - 1).id;
 				adapter.isLoadMore = true;
 				adapter.getdata(0L, Long.parseLong(id) - 1, pageCount, 1,
@@ -125,7 +126,6 @@ public class MainTab01 extends Fragment implements IXListViewListener {
 	/**
 	 * 刷新token信息
 	 */
-	@SuppressWarnings("unused")
 	private void refreshTokenRequest() {
 		Oauth2AccessToken token = AccessTokenKeeper
 				.readAccessToken(homeActivity);
