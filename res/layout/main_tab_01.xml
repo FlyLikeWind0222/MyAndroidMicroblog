@@ -3,7 +3,7 @@
     android:id="@+id/ly_main_weixin"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="#fcfcfc"
+    android:background="@color/light_white"
     android:orientation="vertical" >
 
     <include layout="@layout/title_bar" />
@@ -17,7 +17,7 @@
         android:divider="@color/transparent"
         android:dividerHeight="10dip"
         android:listSelector="@android:color/transparent"
-        android:paddingLeft="5dip"
-        android:paddingRight="5dip" />
+        android:paddingLeft="20dip"
+        android:paddingRight="20dip" />
 
 </LinearLayout>

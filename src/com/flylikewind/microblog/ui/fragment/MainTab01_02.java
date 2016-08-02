@@ -14,6 +14,7 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.flylikewind.microblog.CustomApplication;
 import com.flylikewind.microblog.R;
 import com.flylikewind.microblog.adapter.HomeListviewAdapter2;
 import com.flylikewind.microblog.ui.xlistview.XListView;
@@ -76,8 +77,8 @@ public class MainTab01_02 extends Fragment implements IXListViewListener {
 
 	public List<Status> objects(int currentpage) {
 		adapter.getdata(0L, 0L, 10, 1, false, 0, false);
-		if (adapter.statuses != null) {
-			return adapter.statuses.statusList;
+		if (CustomApplication.statuses != null) {
+			return CustomApplication.statuses.statusList;
 		}
 		return null;
 	}
@@ -103,7 +104,7 @@ public class MainTab01_02 extends Fragment implements IXListViewListener {
 		mHandler.postDelayed(new Runnable() {
 			@Override
 			public void run() {
-				ArrayList<Status> weiboLists = adapter.statuses.statusList;
+				ArrayList<Status> weiboLists = CustomApplication.statuses.statusList;
 				String id = weiboLists.get(weiboLists.size() - 1).id;
 				adapter.isLoadMore = true;
 				adapter.getdata(0L, Long.parseLong(id) - 1, pageCount, 1,

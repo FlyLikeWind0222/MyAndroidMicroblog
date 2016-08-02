@@ -23,6 +23,7 @@ import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.ImageLoader.ImageCache;
 import com.android.volley.toolbox.NetworkImageView;
 import com.android.volley.toolbox.Volley;
+import com.flylikewind.microblog.CustomApplication;
 import com.flylikewind.microblog.R;
 import com.flylikewind.microblog.ui.fragment.MainTab01;
 import com.flylikewind.microblog.ui.ninegrid.Image;
@@ -48,7 +49,7 @@ public class HomeListviewAdapter2 extends BaseAdapter {
 	private StatusesAPI mStatusesAPI;
 	private Activity activity;
 	// 微博数据
-	public StatusList statuses;
+	// public StatusList statuses;
 	private LayoutInflater mInflater;
 	// 是否加载更多的标志
 	public boolean isLoadMore = false;
@@ -77,27 +78,29 @@ public class HomeListviewAdapter2 extends BaseAdapter {
 		}
 	}
 
-	public void clear() {
-		if (statuses != null) {
-			this.statuses.statusList.clear();
-		}
-		notifyDataSetChanged();
-	}
+//	public void clear() {
+//		if (CustomApplication.statuses != null) {
+//			CustomApplication.statuses.statusList.clear();
+//		}
+//		notifyDataSetChanged();
+//	}
 
 	@Override
 	public int getCount() {
-		return statuses == null ? 0 : statuses.statusList.size();
+		return CustomApplication.statuses == null ? 0
+				: CustomApplication.statuses.statusList.size();
 	}
 
 	@Override
 	public Object getItem(int position) {
-		return statuses == null ? 0 : statuses.statusList.get(position);
+		return CustomApplication.statuses == null ? 0
+				: CustomApplication.statuses.statusList.get(position);
 	}
 
 	@Override
 	public long getItemId(int position) {
-		return Long.parseLong(statuses == null ? "0" : statuses.statusList
-				.get(position).id);
+		return Long.parseLong(CustomApplication.statuses == null ? "0"
+				: CustomApplication.statuses.statusList.get(position).id);
 	}
 
 	@Override
@@ -145,7 +148,7 @@ public class HomeListviewAdapter2 extends BaseAdapter {
 			viewHolder = (ViewHolder) view.getTag();
 		}
 
-		//点击每个条目，跳转到详情页
+		// 点击每个条目，跳转到详情页
 		viewHolder.ll_home_listview_item
 				.setOnClickListener(new OnClickListener() {
 					@Override
@@ -157,7 +160,7 @@ public class HomeListviewAdapter2 extends BaseAdapter {
 		/*
 		 * 设置各组件需要显示的微博信息
 		 */
-		Status status = statuses.statusList.get(position);
+		Status status = CustomApplication.statuses.statusList.get(position);
 		// 设置微博头像
 		String imgUrl = status.user.profile_image_url;
 		viewHolder.home_listview_user_head_imageview
@@ -268,18 +271,22 @@ public class HomeListviewAdapter2 extends BaseAdapter {
 					// 如果是加载更多的返回，应该保留原来微博集合的数据
 					if (isLoadMore) {
 						// 调用 StatusList#parse 解析字符串成微博列表对象
-						statuses.statusList
-								.addAll(StatusList.parse(response).statusList);
+						CustomApplication.statuses.statusList.addAll(StatusList
+								.parse(response).statusList);
 						isLoadMore = false;
 					} else {
 						// 调用 StatusList#parse 解析字符串成微博列表对象
-						statuses = StatusList.parse(response);
+						CustomApplication.statuses = StatusList.parse(response);
 					}
 
-					if (statuses != null && statuses.total_number > 0) {
-						Toast.makeText(activity,
-								"获取微博信息流成功, 条数: " + statuses.statusList.size(),
-								Toast.LENGTH_LONG).show();
+					if (CustomApplication.statuses != null
+							&& CustomApplication.statuses.total_number > 0) {
+						Toast.makeText(
+								activity,
+								"获取微博信息流成功, 条数: "
+										+ CustomApplication.statuses.statusList
+												.size(), Toast.LENGTH_LONG)
+								.show();
 						notifyDataSetChanged();
 						MainTab01.getInstance().onLoad();
 					}

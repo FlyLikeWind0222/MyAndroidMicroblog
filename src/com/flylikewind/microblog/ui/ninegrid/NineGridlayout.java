@@ -17,7 +17,7 @@ public class NineGridlayout extends ViewGroup {
 	/**
 	 * 图片之间的间隔
 	 */
-	private int gap = 5;
+	private int gap = 7;
 	private int columns;//
 	private int rows;//
 	@SuppressWarnings("rawtypes")
@@ -31,7 +31,7 @@ public class NineGridlayout extends ViewGroup {
 	public NineGridlayout(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		ScreenTools screenTools = ScreenTools.instance(getContext());
-		totalWidth = screenTools.getScreenWidth() - screenTools.dip2px(16);
+		totalWidth = screenTools.getScreenWidth() - screenTools.dip2px(60);
 	}
 
 	@Override
@@ -47,8 +47,9 @@ public class NineGridlayout extends ViewGroup {
 	private void layoutChildrenView() {
 		int childrenCount = listData.size();
 
-		int singleWidth = (totalWidth - gap * (columns - 1))
-				/ (columns == 1 ? 2 : 3);
+		// int singleWidth = (totalWidth - gap * (columns - 1))
+		// / (columns == 1 ? 2 : 3);
+		int singleWidth = (totalWidth - gap * (columns - 1)) / 3;
 		int singleHeight = singleWidth;
 
 		// 根据子view数量确定高度

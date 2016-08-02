@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.flylikewind.microblog.CustomApplication;
 import com.flylikewind.microblog.R;
 import com.flylikewind.microblog.adapter.HomeListviewAdapter2;
 import com.flylikewind.microblog.ui.xlistview.XListView;
@@ -57,7 +58,7 @@ public class MainTab01 extends Fragment implements IXListViewListener {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		// 刷新token
-//		refreshTokenRequest();
+		// refreshTokenRequest();
 
 		mainTab01 = inflater.inflate(R.layout.main_tab_01, container, false);
 		return mainTab01;
@@ -86,16 +87,18 @@ public class MainTab01 extends Fragment implements IXListViewListener {
 
 	public List<Status> objects(int currentpage) {
 		adapter.getdata(0L, 0L, 10, 1, false, 0, false);
-		if (adapter.statuses != null) {
-			return adapter.statuses.statusList;
+		if (CustomApplication.statuses != null) {
+			return CustomApplication.statuses.statusList;
 		}
 		return null;
 	}
 
 	public void onLoad() {
-		tabHomeListview.stopRefresh();
-		tabHomeListview.stopLoadMore();
-		tabHomeListview.setRefreshTime("刚刚");
+		if (tabHomeListview != null) {
+			tabHomeListview.stopRefresh();
+			tabHomeListview.stopLoadMore();
+			tabHomeListview.setRefreshTime("刚刚");
+		}
 	}
 
 	@Override
@@ -113,7 +116,7 @@ public class MainTab01 extends Fragment implements IXListViewListener {
 		mHandler.postDelayed(new Runnable() {
 			@Override
 			public void run() {
-				ArrayList<Status> weiboLists = adapter.statuses.statusList;
+				ArrayList<Status> weiboLists = CustomApplication.statuses.statusList;
 				String id = weiboLists.get(weiboLists.size() - 1).id;
 				adapter.isLoadMore = true;
 				adapter.getdata(0L, Long.parseLong(id) - 1, pageCount, 1,
