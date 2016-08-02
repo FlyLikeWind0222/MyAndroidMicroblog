@@ -70,6 +70,7 @@ public class MainTab01_02 extends Fragment implements IXListViewListener {
 		radar.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
+				
 				adapter.notifyDataSetChanged();
 			}
 		});

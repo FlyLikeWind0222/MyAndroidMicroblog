@@ -78,12 +78,12 @@ public class HomeListviewAdapter2 extends BaseAdapter {
 		}
 	}
 
-//	public void clear() {
-//		if (CustomApplication.statuses != null) {
-//			CustomApplication.statuses.statusList.clear();
-//		}
-//		notifyDataSetChanged();
-//	}
+	// public void clear() {
+	// if (CustomApplication.statuses != null) {
+	// CustomApplication.statuses.statusList.clear();
+	// }
+	// notifyDataSetChanged();
+	// }
 
 	@Override
 	public int getCount() {

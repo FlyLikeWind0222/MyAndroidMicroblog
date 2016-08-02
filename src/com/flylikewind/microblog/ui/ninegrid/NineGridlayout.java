@@ -151,7 +151,6 @@ public class NineGridlayout extends ViewGroup {
 		iv.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-
 			}
 		});
 		iv.setBackgroundColor(Color.parseColor("#f5f5f5"));

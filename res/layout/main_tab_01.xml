@@ -18,6 +18,7 @@
         android:dividerHeight="10dip"
         android:listSelector="@android:color/transparent"
         android:paddingLeft="20dip"
+        
         android:paddingRight="20dip" />
 
 </LinearLayout>

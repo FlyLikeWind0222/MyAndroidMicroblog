@@ -41,6 +41,7 @@ public class MainTab01 extends Fragment implements IXListViewListener {
 	private Handler mHandler;
 
 	public MainTab01() {
+		
 	}
 
 	public static MainTab01 getInstance() {
